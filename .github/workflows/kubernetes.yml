@@ -46,7 +46,7 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/train-schedule:latest
 
     - name: Copy Kubernetes Files
-      uses: appleboy/scp-action@v0.1.7
+      uses: appleboy/ssh-action@v1.2.0
       with:
         host: ${{ secrets.K8S_MASTER_HOST }}
         username: ${{ secrets.K8S_MASTER_USER }}
