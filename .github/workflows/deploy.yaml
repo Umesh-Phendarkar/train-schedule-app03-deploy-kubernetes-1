@@ -128,9 +128,9 @@ jobs:
       - name: Copy Kubernetes manifest
         uses: appleboy/scp-action@v1
         with:
-          host: ${{ secrets.K8S_HOST }}
-          username: ${{ secrets.K8S_USER }}
-          key: ${{ secrets.K8S_SSH_KEY }}
+          host: ${{ secrets.K8S_MASTER_HOST }}
+          username: ${{ secrets.K8S_MASTER_USER }}
+          key: ${{ secrets.K8S_MASTER_SSH_KEY }}
           source: "train-schedule-kube.yml"
           target: "/tmp"
 
