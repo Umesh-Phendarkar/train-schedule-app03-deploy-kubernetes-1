@@ -131,7 +131,7 @@ jobs:
           host: ${{ secrets.K8S_MASTER_HOST }}
           username: ${{ secrets.K8S_MASTER_USER }}
           key: ${{ secrets.K8S_MASTER_SSH_KEY }}
-          source: "train-schedule-kube.yml"
+          source: "deployment.yaml"
           target: "/tmp"
 
       # --------------------------------------------------------
@@ -185,17 +185,17 @@ jobs:
 
             sed -i \
               "s|DOCKER_IMAGE_PLACEHOLDER|$IMAGE|g" \
-              /tmp/train-schedule-kube.yml
+              /tmp/deployment.yaml
 
             echo "Manifest image:"
-            grep "image:" /tmp/train-schedule-kube.yml
+            grep "image:" /tmp/deployment.yaml
 
             echo ""
             echo "=========================================="
             echo "Applying Kubernetes Manifest"
             echo "=========================================="
 
-            kubectl apply -f /tmp/train-schedule-kube.yml
+            kubectl apply -f /tmp/deployment.yaml
 
             echo ""
             echo "=========================================="
