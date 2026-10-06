@@ -132,7 +132,7 @@ jobs:
           username: ${{ secrets.K8S_MASTER_USER }}
           key: ${{ secrets.K8S_MASTER_SSH_KEY }}
           source: "deployment.yaml"
-          target: "/tmp"
+          target: "k8s"
 
       # --------------------------------------------------------
       # SSH to Kubernetes control-plane
@@ -185,17 +185,17 @@ jobs:
 
             sed -i \
               "s|DOCKER_IMAGE_PLACEHOLDER|$IMAGE|g" \
-              /tmp/deployment.yaml
+              k8s/deployment.yaml
 
             echo "Manifest image:"
-            grep "image:" /tmp/deployment.yaml
+            grep "image:" /k8s/deployment.yaml
 
             echo ""
             echo "=========================================="
             echo "Applying Kubernetes Manifest"
             echo "=========================================="
 
-            kubectl apply -f /tmp/deployment.yaml
+            kubectl apply -f /k8s/deployment.yaml
 
             echo ""
             echo "=========================================="
