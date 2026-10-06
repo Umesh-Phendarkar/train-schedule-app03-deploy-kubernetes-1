@@ -1,11 +1,8 @@
 name: Train Schedule CI/CD
-## 
 on:
   push:
     branches:
       - main
-
-  workflow_dispatch:
 
 env:
   APP_NAME: train-schedule
