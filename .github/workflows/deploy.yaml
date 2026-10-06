@@ -126,7 +126,7 @@ jobs:
       # --------------------------------------------------------
 
       - name: Copy Kubernetes manifest
-        uses: appleboy/scp-action@v1
+        uses: uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.K8S_MASTER_HOST }}
           username: ${{ secrets.K8S_MASTER_USER }}
